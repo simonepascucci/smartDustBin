@@ -1,7 +1,7 @@
 # smartDustBin
 Individual project for the course "IoT: algorithms and services" at Sapienza Università di Roma Engineering in Computer Science master degree.
 
-- [Personal Linkedin profile](www.linkedin.com/in/simone-pascucci-17751126b/)
+- [Personal Linkedin profile](https://www.linkedin.com/in/simone-pascucci-17751126b/)
 
 ## Brief description
 
@@ -39,6 +39,5 @@ Mosquitto is an open-source MQTT broker that facilitates lightweight messaging b
 
 ### AWS Ecosystem
 
-![](images/ecosystem.png)
-
 The Smart Dust Bin project leverages the power of the AWS ecosystem to enhance its functionality and capabilities. AWS IoT Core enables secure communication between the ESP32 board and the cloud, while Amazon DynamoDB provides efficient storage and retrieval of lid opening events and load measurements. AWS Lambda functions process real-time data, triggering automated actions. Amazon API Gateway offers a secure web interface for users to monitor and control the system, and AWS Amplify simplifies the development of a user-friendly application. Together, these services ensure seamless connectivity, real-time data analysis, controlled access, and an enhanced user experience for the smart dust bin project.
+![](images/ecosystem.png)
