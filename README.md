@@ -20,13 +20,13 @@ RIOT OS is a lightweight operating system designed specifically for the Internet
 
 ###Ultrasonic sensor HC-SR04
 
-![](images/ultrasonic.webp)
+![](images/ultrasonic.png)
 
 The HC-SR04 ultrasonic sensor is a popular distance measuring module used in various projects. It utilizes ultrasonic waves to accurately measure distances between objects and the sensor. In this project, the HC-SR04 sensor can be employed to detect the presence of objects near the smart dust bin, triggering the lid to open automatically. By providing precise distance measurements, it ensures efficient and timely lid operation, enhancing the convenience and usability of the system.
 
 ###Servo motor
 
-![](images/servo.webp)
+![](images/servo.jpeg)
 
 The servo motor is a versatile actuator commonly used in projects requiring precise control of rotational motion. In your project, the servo motor serves the purpose of automatically opening the lid of the smart dust bin. By receiving control signals from the ESP32 board, it can rotate to a specific angle, allowing the lid to open smoothly. The servo motor adds a dynamic and automated functionality to the system, enhancing user experience.
 
