@@ -1,7 +1,7 @@
 # smartDustBin
 Individual project for the course "IoT: algorithms and services" at Sapienza Università di Roma Engineering in Computer Science master degree.
 
-- [Personal Linkedin profile](www.linkedin.com/in/simone-pascucci-17751126b/](https://www.linkedin.com/in/simone-pascucci-17751126b/)
+- [Personal Linkedin profile](https://www.linkedin.com/in/simone-pascucci-17751126b/)
 
 ## Brief description
 
