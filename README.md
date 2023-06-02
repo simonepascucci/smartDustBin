@@ -13,7 +13,7 @@ The core concept behind the project is to create a dust bin that autonomously de
 
 ### ESP32v3 board and RiotOS
 
-![](images/board.png) <img src="images/board.png" alt="Alt Text" height="200" width="300">
+![](images/board.png)
 ![](images/riot.png)
 
 The ESP32v3 board is a powerful microcontroller board featuring the ESP32 chip, renowned for its versatility and capabilities. With built-in Wi-Fi and Bluetooth connectivity, ample processing power, and a rich set of I/O interfaces, the ESP32v3 board is an ideal choice for IoT projects, robotics, and advanced embedded systems. It offers an extensive range of functionalities and supports various programming frameworks, making it a reliable and flexible solution for diverse applications.
