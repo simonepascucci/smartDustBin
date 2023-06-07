@@ -182,7 +182,7 @@ int main(void)
 
         distance = srf04_get_distance(&dev);
 
-        if(distance <= D_THRESHOLD){
+        if(distance <= D_THRESHOLD && distance >= 0){
 
             printf("Detected distance below threshold: %d mm\n", distance);
             printf("\nOpening the lid...\n\n");
