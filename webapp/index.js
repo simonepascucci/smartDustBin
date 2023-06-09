@@ -22,9 +22,9 @@ function callAPI() {
   }
 
   function storeData(data){
-    distance = data["distance"]
-    state = data["status"]
-    ts = data["timestamp"]
+    distance = data[0]["distance"]
+    state = data[0]["status"]
+    ts = data[1]["timestamp"]
     
     var date = ""
     for (i = 0; i < 10; i++)
@@ -34,7 +34,7 @@ function callAPI() {
     for (i = 11; i < ts.length; i++)
         time += ts[i]
     
-    document.getElementById("lastOpening").innerHTML = date + "<br>" + time
+    document.getElementById("lastOpening").innerHTML = date + "<br><span class='text-warning'> At: </span>" + time
 
     if (state == "CLOSED"){
         document.getElementById("statusCard").classList.remove("bg-success");
@@ -53,7 +53,49 @@ function callAPI() {
         document.getElementById("status").innerText = "Connection error!";
     }
 
-    document.getElementById("distance").innerText = distance + " mm"
+    document.getElementById("distance").innerText = distance.toPrecision(3) / 10 + " cm"
+
+    var lastDay = "";
+    lastDay += date[0]
+    lastDay += date[1]
+
+    var openingsNumberD = 0
+
+    for (i = 0; i < data.length; i++){
+      var tday = "";
+      tday = data[i]["timestamp"][0] + data[i]["timestamp"][1]
+      if(tday == lastDay){
+        openingsNumberD++
+      }
+    }
+
+    var lastHour = "";
+    lastHour += time[0]
+    lastHour += time[1]
+
+    var openingsNumberH = 0
+
+    for (i = 0; i < data.length; i++){
+      var thour = "";
+      thour = data[i]["timestamp"][11] + data[i]["timestamp"][12]
+      if(thour == lastHour){
+        openingsNumberH++
+      }
+    }
+
+    var openingDistances = [];
+    var s = 0;
+    for(i = 0; i < data.length; i++){
+      if(data[i]["status"] == "OPEN" && data[i]["distance"] != -2){
+        openingDistances.push(data[i]["distance"])
+        s += data[i]["distance"]
+      }
+    }
+    var meanDistance = s / openingDistances.length
+
+    document.getElementById("LD").innerText = openingsNumberD
+    document.getElementById("LH").innerText = openingsNumberH
+    document.getElementById("MD").innerText = meanDistance.toPrecision(3) / 10 + " cm"
   }
 
   function init(){
