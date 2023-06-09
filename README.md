@@ -54,9 +54,13 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 
 ![](images/prototype.jpeg)
 
+### Web Dashboard
 
-##Video demonstration
+![](images/web.png)
+
+
+## Video demonstration
 -
 
 ## Hackster.io article
-- 
+- [Project blog entry on Hackster](https://www.hackster.io/simonepascucci/smart-dust-bin-with-riotos-and-esp-32-v3-5eb491)
