@@ -64,11 +64,22 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 - Create a new folder and call it "smartDustBin"
 - Paste into the just created folder the files that are into the "code" folder of this repository
 
-### 3. Install and configure Mosquitto
+#### 3. Install and configure Mosquitto
 - Download and install the mosquitto MQTT-Broker following the instructions at [this link](https://mosquitto.org/download/)
 - Go into the installation folder (On Ubuntu it's "etc/mosquitto/") and create a new file called "mosquitto.conf" and paste the following lines into it:
 - - allow_anonymous true
 - - listener 1883
+
+#### 4. Connection to AWS
+Create an AWS account if you don't own one.
+##### 4.1 IoT Core
+- [Connect a new thing](https://eu-west-3.console.aws.amazon.com/iot/home?region=eu-west-3#/home) following the instructions given by AWS and download the SDK package on your pc.
+- Go into "Things" and click on your thing and then go into "Certificates" section. Connect the policy that is under SDK folder downloaded in the previous step and edit the active version as follows: Add the following 5 lines in the JSON document of the policy. The first two under the "Publish" action in the "Resource" section, the following two under "Subscribe" and the last one under "Connect".
+- - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin"
+- - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin/data"
+- - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin"
+- - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin/data"
+- - "arn:aws:iot:eu-west-3:477201098489:client/ESP32"
 
 ### Web Dashboard
 
