@@ -57,51 +57,76 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 ### Hands-On Walkthrough
 
 #### 1. Get RiotOS
-- Install RiotOS and all its dependencies on your machine by following the instructions in the [official repo](https://github.com/RIOT-OS/RIOT) of the operating system. I suggest to install everything on an Ubuntu machine.
+  - Install RiotOS and all its dependencies on your machine by following the instructions in the [official repo](https://github.com/RIOT-OS/RIOT) of the operating system. I suggest to install everything on an Ubuntu machine.
 
 #### 2. Create a new Riot application
-- Go into the examples folder under the Riot base directory.
-- Create a new folder and call it "smartDustBin"
-- Paste into the just created folder the files that are into the "code" folder of this repository
+  - Go into the examples folder under the Riot base directory.
+  - Create a new folder and call it "smartDustBin"
+  - Paste into the just created folder the files that are into the "code" folder of this repository
 
 #### 3. Install and configure Mosquitto
-- Download and install the mosquitto MQTT-Broker following the instructions at [this link](https://mosquitto.org/download/)
-- Go into the installation folder (On Ubuntu it's "etc/mosquitto/") and create a new file called "mosquitto.conf" and paste the following lines into it:
-- - allow_anonymous true
-- - listener 1883
+  - Download and install the mosquitto MQTT-Broker following the instructions at [this link](https://mosquitto.org/download/)
+  - Go into the installation folder (On Ubuntu it's "etc/mosquitto/") and create a new file called "mosquitto.conf" and paste the following lines into it:
+  - - allow_anonymous true
+  - - listener 1883
 
 #### 4. Connection to AWS
-Create an AWS account if you don't own one.
+  Create an AWS account if you don't own one.
 
 #### 4.1 IoT Core
-- [Connect a new thing](https://eu-west-3.console.aws.amazon.com/iot/home?region=eu-west-3#/home) following the instructions given by AWS and download the SDK package on your pc.
-- Go into "Things" and click on your thing and then go into "Certificates" section. Connect the policy that is under SDK folder downloaded in the previous step and edit the active version as follows: Add the following 5 lines in the JSON document of the policy. The first two under the "Publish" action in the "Resource" section, the following two under "Subscribe" and the last one under "Connect".
-- - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin"
-- - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin/data"
-- - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin"
-- - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin/data"
-- - "arn:aws:iot:eu-west-3:477201098489:client/ESP32"
-- Go into message routing section in the side menu and then into Rules to create a new rule called "dustbinRule" and click on the next button.
-- SELECT * FROM 'dustbin/data'
-- Choose DynamoDBv2 and then create a new table called "dustbinTable" with "timestamp" as partition key attribute.
-- Go back to the rule settings, select the just created table and create a new IAM role "user" and select it.
-- Complete the rule creation.
+  - [Connect a new thing](https://eu-west-3.console.aws.amazon.com/iot/home?region=eu-west-3#/home) following the instructions given by AWS and download the SDK package on your pc.
+  - Go into "Things" and click on your thing and then go into "Certificates" section. Connect the policy that is under SDK folder downloaded in the previous step and edit the active version as follows: Add the following 5 lines in the JSON document of the policy. The first two under the "Publish" action in the "Resource" section, the following two under "Subscribe" and the last one under "Connect".
+  - - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin"
+  - - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin/data"
+  - - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin"
+  - - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin/data"
+  - - "arn:aws:iot:eu-west-3:477201098489:client/ESP32"
+  - Go into message routing section in the side menu and then into Rules to create a new rule called "dustbinRule" and click on the next button.
+  - SELECT * FROM 'dustbin/data'
+  - Choose DynamoDBv2 and then create a new table called "dustbinTable" with "timestamp" as partition key attribute.
+  - Go back to the rule settings, select the just created table and create a new IAM role "user" and select it.
+  - Complete the rule creation.
 
 #### 4.2 Lambda
-- [Create a new python](https://eu-west-3.console.aws.amazon.com/lambda/home?region=eu-west-3#/discover) Lambda function, name it "getDustBinData" and paste the code of the same named python script included in this repository.
-- Save changes and deploy your function, if you want you can test it by clicking on "Test" button an creating a test event.
+  - [Create a new python](https://eu-west-3.console.aws.amazon.com/lambda/home?region=eu-west-3#/discover) Lambda function, name it "getDustBinData" and paste the code of the same named python script included in this repository.
+  - Save changes and deploy your function, if you want you can test it by clicking on "Test" button an creating a test event.
 
 #### 4.3 API Gateway
-- [Create a new REST API](https://eu-west-3.console.aws.amazon.com/apigateway/main/apis?region=eu-west-3) called "dustbinAPI".
-- Click on "Options" into the resource section and create a new "GET" method.
-- Be sure to paste the ARN of your lambda function where requested and
-- Then under the options click on "Enable CORS" and enable it.
-- Finally click on deploy API, select "New phase" and call it "dev". Now you obtained the URL of the API needed in the web app javascript file.
+  - [Create a new REST API](https://eu-west-3.console.aws.amazon.com/apigateway/main/apis?region=eu-west-3)  called "dustbinAPI".
+  - Click on "Options" into the resource section and create a new "GET" method.
+  - Be sure to paste the ARN of your lambda function where requested and
+  - Then under the options click on "Enable CORS" and enable it.
+  - Finally click on deploy API, select "New phase" and call it "dev". Now you obtained the URL of the       API needed in the web app javascript file.
 
 #### 4.4 Amplify
-- [Create a new App](https://eu-west-3.console.aws.amazon.com/amplify/home?region=eu-west-3#/), call it "dustbinAPP".
-- Choose the option to implement without a git provider.
-- Rename the enviroment to "dev" and drag and drop the folder of the web application of the project.
+  - [Create a new App](https://eu-west-3.console.aws.amazon.com/amplify/home?region=eu-west-3#/) and call   it "dustbinAPP".
+  - Choose the option to implement without a git provider.
+  - Rename the enviroment to "dev" and drag and drop the folder of the web application of the project.
+
+### How to run the code.
+1) Go into the Riot application folder:
+  - In the Makefile:
+  -- Change the Wi-Fi parameters to the ones that you want to use
+  - In the main.c file:
+  -- Change the BROKER_ADDRESS with your IPv4 ip address.
+
+2) Flash the firmware onto your esp32 board using the following command:
+  - $ sudo BOARD=esp32s3-devkit BUILD_IN_DOCKER=1 DOCKER="sudo docker" PORT=/dev/ttyUSB0 make all flash
+
+3) Run Mosquitto from its root directory with the command:
+  - $ mosquitto -v -c mosquitto.conf
+
+4) Go into the python transparent bridge provided in this repo:
+  - Change the BROKER_ADDRESS variable value to yours
+  - Change the three paths of root-CA, private-key and certificate.pem to yours.
+  - Change the value of AWS endpoint variable to yours
+
+5) Start the bridge with:
+  - $ python3 MQTT_transparentBridge
+
+6) In the javascript file of the web application make sure to change the URL passed in the "callAPI()" function to the one corresponding to your API endpoint.
+
+Now everything should work and you should start to see the real data updates in the web dashboard. You can see this process in more details by watching the youtube video demonstration of the project.
 
 ### Web Dashboard
 
