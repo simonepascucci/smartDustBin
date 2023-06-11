@@ -72,7 +72,8 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 
 #### 4. Connection to AWS
 Create an AWS account if you don't own one.
-##### 4.1 IoT Core
+
+#### 4.1 IoT Core
 - [Connect a new thing](https://eu-west-3.console.aws.amazon.com/iot/home?region=eu-west-3#/home) following the instructions given by AWS and download the SDK package on your pc.
 - Go into "Things" and click on your thing and then go into "Certificates" section. Connect the policy that is under SDK folder downloaded in the previous step and edit the active version as follows: Add the following 5 lines in the JSON document of the policy. The first two under the "Publish" action in the "Resource" section, the following two under "Subscribe" and the last one under "Connect".
 - - "arn:aws:iot:eu-west-3:477201098489:topic/dustbin"
@@ -80,6 +81,27 @@ Create an AWS account if you don't own one.
 - - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin"
 - - "arn:aws:iot:eu-west-3:477201098489:topicfilter/dustbin/data"
 - - "arn:aws:iot:eu-west-3:477201098489:client/ESP32"
+- Go into message routing section in the side menu and then into Rules to create a new rule called "dustbinRule" and click on the next button.
+- SELECT * FROM 'dustbin/data'
+- Choose DynamoDBv2 and then create a new table called "dustbinTable" with "timestamp" as partition key attribute.
+- Go back to the rule settings, select the just created table and create a new IAM role "user" and select it.
+- Complete the rule creation.
+
+#### 4.2 Lambda
+- [Create a new python](https://eu-west-3.console.aws.amazon.com/lambda/home?region=eu-west-3#/discover) Lambda function, name it "getDustBinData" and paste the code of the same named python script included in this repository.
+- Save changes and deploy your function, if you want you can test it by clicking on "Test" button an creating a test event.
+
+#### 4.3 API Gateway
+- [Create a new REST API](https://eu-west-3.console.aws.amazon.com/apigateway/main/apis?region=eu-west-3) called "dustbinAPI".
+- Click on "Options" into the resource section and create a new "GET" method.
+- Be sure to paste the ARN of your lambda function where requested and
+- Then under the options click on "Enable CORS" and enable it.
+- Finally click on deploy API, select "New phase" and call it "dev". Now you obtained the URL of the API needed in the web app javascript file.
+
+#### 4.4 Amplify
+- [Create a new App](https://eu-west-3.console.aws.amazon.com/amplify/home?region=eu-west-3#/), call it "dustbinAPP".
+- Choose the option to implement without a git provider.
+- Rename the enviroment to "dev" and drag and drop the folder of the web application of the project.
 
 ### Web Dashboard
 
