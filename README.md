@@ -122,7 +122,7 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
   - Change the value of AWS endpoint variable to yours
 
 5) Start the bridge with:
-  - $ python3 MQTT_transparentBridge
+  - $ python3 MQTTClient_transparentBridge
 
 6) In the javascript file of the web application make sure to change the URL passed in the "callAPI()" function to the one corresponding to your API endpoint.
 
