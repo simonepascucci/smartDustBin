@@ -54,6 +54,22 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 
 ![](images/prototype.jpeg)
 
+### Hands-On Walkthrough
+
+#### 1. Get RiotOS
+- Install RiotOS and all its dependencies on your machine by following the instructions in the [official repo](https://github.com/RIOT-OS/RIOT) of the operating system. I suggest to install everything on an Ubuntu machine.
+
+#### 2. Create a new Riot application
+- Go into the examples folder under the Riot base directory.
+- Create a new folder and call it "smartDustBin"
+- Paste into the just created folder the files that are into the "code" folder of this repository
+
+### 3. Install and configure Mosquitto
+- Download and install the mosquitto MQTT-Broker following the instructions at [this link](https://mosquitto.org/download/)
+- Go into the installation folder (On Ubuntu it's "etc/mosquitto/") and create a new file called "mosquitto.conf" and paste the following lines into it:
+- - allow_anonymous true
+- - listener 1883
+
 ### Web Dashboard
 
 ![](images/web.png)
