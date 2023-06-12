@@ -54,6 +54,10 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 
 ![](images/prototype.jpeg)
 
+### Circuit schematic
+
+![](images/bincircuit_bb.png)
+
 ### Hands-On Walkthrough
 
 #### 1. Get RiotOS
