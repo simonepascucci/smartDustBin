@@ -1,14 +1,12 @@
 import boto3
 
 def lambda_handler(event, context):
-    # Initialize DynamoDB client
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('dustbinTable')
-
-    # Scan the table to get all items
+    
     response = table.scan()
-
-    # Get the item with the latest timestamp
-    latest_item = max(response['Items'], key=lambda x: x['timestamp'])
-
-    return latest_item
+    
+    items = response['Items']
+    sorted_items = sorted(items, key=lambda x: x['timestamp'], reverse=True)
+    
+    return sorted_items
