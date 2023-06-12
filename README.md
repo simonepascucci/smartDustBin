@@ -89,7 +89,9 @@ The following image represents a picture of the prototype of the Smart Dust Bin 
 
 #### 4.2 Lambda
   - [Create a new python](https://eu-west-3.console.aws.amazon.com/lambda/home?region=eu-west-3#/discover) Lambda function, name it "getDustBinData" and paste the code of the same named python script included in this repository.
-  - Save changes and deploy your function, if you want you can test it by clicking on "Test" button an creating a test event.
+  - Save changes and deploy your function.
+  - Now you must give the lambda function the permission to access a dynamoDB table, to do this search "IAM" in the AWS research bar or click on [this link](https://us-east-1.console.aws.amazon.com/iamv2/home#/policies), the go into the "Policy" settings and search "dynamoDB". Click on the first result (It should be something like "amazonDynamoDBFullAccess"), and then into the "Entities attached" section click on "Attach" in order to attach the policy to your lambda function.
+  - If you want now you can test your function by clicking on the "Test" button.
 
 #### 4.3 API Gateway
   - [Create a new REST API](https://eu-west-3.console.aws.amazon.com/apigateway/main/apis?region=eu-west-3)  called "dustbinAPI".
