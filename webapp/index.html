@@ -15,36 +15,36 @@
           </a>
         </div>
       </nav>
-    <div class="container text-center">
+    <div class="container">
         <div class="row mt-5">
-            <div class="col">
+            <div class="col-4">
                 <div class="card border-warning bg-dark text-light mb-3" style="max-width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title text-warning">Last lid opening:</h5>
-                      <p class="card-text" id="lastOpening">/</p>
+                      <p class="card-text text-center" id="lastOpening">/</p>
                     </div>
                   </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div class="card border-dark mb-3" style="max-width: 18rem;">
                     <div class="card-body" id="statusCard">
                       <h5 class="card-title">Bin status:</h5>
-                      <p class="card-text" id="status">/</p>
+                      <p class="card-text text-center" id="status">/</p>
                     </div>
                   </div>
+                  <p class="lead text-light mt-5">Number of openings in the last day: <h4 id="LD" class="text-warning text-center">/</h4></p>
+                  <p class="lead text-light mt-2">Number of openings in the last hour: <h4 id="LH" class="text-warning text-center">/</h4></p>
+                  <p class="lead text-light mt-2">Mean opening distance: <h4 id="MD" class="text-warning text-center">/</h4></p>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div class="card border-warning bg-dark text-light mb-3" style="max-width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title text-warning">Last distance detected:</h5>
-                      <p class="card-text" id="distance">/</p>
+                      <p class="card-text text-center" id="distance">/</p>
                     </div>
                   </div>
             </div>
         </div>
-        <p class="lead text-light mt-2">Number of openings in the last day: <h4 id="LD" class="text-warning">/</h4></p>
-        <p class="lead text-light mt-2">Number of openings in the last hour: <h4 id="LH" class="text-warning">/</h4></p>
-        <p class="lead text-light mt-2">Mean opening distance: <h4 id="MD" class="text-warning">/</h4></p>
         <div class="row align-items-end text-start mt-2">
             <p class="lead text-light">Useful links:</p>
             <ul class="list-group list-group-flush">
