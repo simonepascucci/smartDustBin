@@ -137,7 +137,8 @@ Now everything should work and you should start to see the real data updates in 
 ### Web Dashboard
 
 ![](images/web.png)
-[Access the dashboard](https://dev6075.d3hiapxu03zcjy.amplifyapp.com)
+
+- [Access the dashboard](https://dev6075.d3hiapxu03zcjy.amplifyapp.com)
 
 
 ## Video demonstration
